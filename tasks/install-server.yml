@@ -1,0 +1,17 @@
+- name: install mysql dependencies
+  apt: name={{item}} state=present
+  with_items:
+    - libaio1
+    - libmysqlclient18
+    
+- name: install server
+  apt: name=mysql-server state=present
+  
+- name: register mysql service
+  service: name=mysql state=started enabled=yes
+  
+- name: check if mysql bin registered
+  shell: which mysql
+  register: output
+  
+- debug: var=output

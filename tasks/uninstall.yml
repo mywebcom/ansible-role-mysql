@@ -1,0 +1,16 @@
+- name: remove packages
+  apt: name={{item}} state=absent
+  with_items:
+    - mysql-common 
+    - mysql-server-5.5
+    - mysql-server-core-5.5
+    - mysql-client-5.5
+    - mysql-client-core-5.5
+    
+- name: auto remove dependencies
+  shell: apt-get autoremove
+  
+- name: remove mysql service from update-rd.c
+  service: name=mysql enabled=no
+  ignore_errors: yes
+    

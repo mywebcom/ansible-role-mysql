@@ -1,0 +1,2 @@
+- name: add mysql user
+  mysql_user: name={{db_username}} login_host={{db_host}} password={{db_password}} priv={{db_user_privilege}} state=present

@@ -1,0 +1,6 @@
+---
+uninstall_old_mysql: false
+install_mysql_server: true
+install_mysql_client: true
+mysql_add_user: false
+

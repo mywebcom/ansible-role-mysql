@@ -1,0 +1,15 @@
+---
+- include: uninstall.yml
+  when: uninstall_old_mysql == true
+    
+- name: add new repository for mysql
+  apt_repository: repo=ppa:ondrej/mysql-5.6 state=present
+
+- include: install-server.yml
+  when: install_mysql_server == true
+  
+- include: install-client.yml
+  when: install_mysql_client == true
+  
+- include: add-user.yml
+  when: mysql_add_user == true
